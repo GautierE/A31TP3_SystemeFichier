@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Repertoire extends Chemin
 {
-    private ArrayList<Chemin> childrens = new ArrayList<>();
     public static final int size = 4096;
 
     public Repertoire(String nom, Repertoire parent)
@@ -16,17 +15,15 @@ public class Repertoire extends Chemin
         this.setNom(nom);
     }
 
+    @Override
     public void removeChild(Chemin child)
     {
-        this.childrens.remove(child);
+        this.getChildrens().remove(child);
     }
 
+    @Override
     public void addChild(Chemin child)
     {
-       this.childrens.add(child);
-    }
-
-    public ArrayList<Chemin> getChildrens() {
-        return childrens;
+        this.getChildrens().add(child);
     }
 }

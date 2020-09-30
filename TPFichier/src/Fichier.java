@@ -9,6 +9,12 @@ public class Fichier extends Chemin
         this.contenu = contenu;
     }
 
+    public Fichier(String nom)
+    {
+        this.setNom(nom);
+        this.contenu = contenu;
+    }
+
     public String getContenu()
     {
         return contenu;
@@ -17,5 +23,11 @@ public class Fichier extends Chemin
     public void setContenu(String contenu)
     {
         this.contenu = contenu;
+    }
+
+    @Override
+    public void removeChild(Chemin child)
+    {
+        //throw new Exception("Un fichier ne possède pas d'enfants");
     }
 }

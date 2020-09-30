@@ -87,6 +87,7 @@ public class Service {
 
     public static int getDirSize(Repertoire dir)
     {
+        // Initialise avec la taille du repertoire passe en parametre
         int dirSize = Repertoire.size;
         // dirQueue contient tous les chemins à tester
         ArrayList<Chemin> dirQueue = dir.getChildrens();
