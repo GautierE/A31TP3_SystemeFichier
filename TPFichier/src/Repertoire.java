@@ -2,13 +2,9 @@ import java.util.ArrayList;
 
 public class Repertoire extends Chemin
 {
+    private ArrayList<Chemin> childrens = new ArrayList<>();
     public static final int size = 4096;
 
-    public Repertoire(String nom, Repertoire parent)
-    {
-        this.setNom(nom);
-        this.setParent(parent);
-    }
     // Constructeur de la racine
     public Repertoire(String nom)
     {
@@ -18,12 +14,19 @@ public class Repertoire extends Chemin
     @Override
     public void removeChild(Chemin child)
     {
-        this.getChildrens().remove(child);
+        this.childrens.remove(child);
     }
 
     @Override
     public void addChild(Chemin child)
     {
-        this.getChildrens().add(child);
+        this.childrens.add(child);
+        child.setParent(this);
+    }
+
+    @Override
+    public ArrayList<Chemin> getChildrens()
+    {
+        return this.childrens;
     }
 }

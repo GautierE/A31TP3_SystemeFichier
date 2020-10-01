@@ -1,3 +1,4 @@
+import java.awt.desktop.SystemSleepEvent;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -136,7 +137,6 @@ public class Service {
                     {
                         if(path instanceof Repertoire)
                         {
-                            System.out.println(path.getNom());
                             dirSize += Repertoire.size;
                         }
                         else

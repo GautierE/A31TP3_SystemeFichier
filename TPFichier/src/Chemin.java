@@ -2,7 +2,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public abstract class Chemin implements Serializable {
-    private ArrayList<Chemin> childrens = new ArrayList<>();
     private String nom;
     private Repertoire parent;
     public static final Repertoire racine = new Repertoire("racine");
@@ -19,7 +18,8 @@ public abstract class Chemin implements Serializable {
         return parent;
     }
 
-    public void setParent(Repertoire parent) {
+    public void setParent(Repertoire parent)
+    {
         this.parent = parent;
     }
 
@@ -28,14 +28,18 @@ public abstract class Chemin implements Serializable {
         this.parent = null;
     }
 
-    public abstract void removeChild(Chemin child);
-
-    public void addChild(Chemin child)
+    public void removeChild(Chemin child) throws Exception
     {
-        this.childrens.add(child);
+        throw new Exception("Un fichier ne possède pas de parents");
     }
 
-    public ArrayList<Chemin> getChildrens() {
-        return childrens;
+    public void addChild(Chemin child) throws Exception
+    {
+        throw new Exception("Un fichier ne possède pas d'enfants");
+    }
+
+    public ArrayList<Chemin> getChildrens() throws Exception
+    {
+        throw new Exception("Un fichier ne possède pas d'enfants");
     }
 }
