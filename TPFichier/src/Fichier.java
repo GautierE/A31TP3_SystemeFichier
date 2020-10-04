@@ -5,7 +5,6 @@ public class Fichier extends Chemin
     public Fichier(String nom)
     {
         this.setNom(nom);
-        this.contenu = contenu;
     }
 
     public String getContenu()
