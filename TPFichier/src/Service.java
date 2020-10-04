@@ -44,6 +44,8 @@ public class Service {
 
         try
         {
+            listeRetour.add(getChemin(dir));
+
             for (Chemin path : dir.getChildrens())
             {
                 if (path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)

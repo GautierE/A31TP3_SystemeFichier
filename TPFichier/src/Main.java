@@ -6,12 +6,15 @@ public class Main
 
         Repertoire a31 = creator.createRepertoire("A31");
         Repertoire.racine.addChild(a31);
+
         Fichier tp1 = creator.createFichier("TP1");
         tp1.setContenu("Le tp 1");
         a31.addChild(tp1);
+
         Fichier tp2 = creator.createFichier("TP2");
         tp2.setContenu("Le tp 2");
         a31.addChild(tp2);
+
         Fichier tp3 = creator.createFichier("TP3");
         tp3.setContenu("Le tp 3");
         a31.addChild(tp3);
@@ -25,17 +28,23 @@ public class Main
 
         Repertoire w31 = creator.createRepertoire("W31");
         Repertoire.racine.addChild(w31);
+
         Fichier td1 = creator.createFichier("TD1");
         td1.setContenu("Le td1");
         w31.addChild(td1);
+
         Fichier td2 = creator.createFichier("TD2");
         td2.setContenu("Le td2");
         w31.addChild(td2);
+
         Fichier td3 = creator.createFichier("TD3");
         td3.setContenu("Le td3");
         w31.addChild(td3);
 
-        System.out.println(Service.getPathsFromAncestor(Repertoire.racine));
 
+        System.out.println("Chemin absolu du fichier TD1: " + Service.getChemin(td1));
+        System.out.println("Tous les enfants de A31: " + Service.getPathsFromAncestor(a31));
+        System.out.println("Tous les chemins absolus depuis la racine portants le nom W31 " + Service.getChildsByName("W31"));
+        System.out.println("Taille de la racine: " + Service.getDirSize(Repertoire.racine));
     }
 }
