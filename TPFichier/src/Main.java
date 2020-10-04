@@ -35,7 +35,7 @@ public class Main
         td3.setContenu("Le td3");
         w31.addChild(td3);
 
-        System.out.println(Service.getDirSize(Repertoire.racine));
+        System.out.println(Service.getPathsFromAncestor(Repertoire.racine));
 
     }
 }

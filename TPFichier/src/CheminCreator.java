@@ -2,6 +2,11 @@ public class CheminCreator
 {
     private static CheminCreator instance;
 
+    /**
+     * Singleton permettant d'acceder a l'instance de la classe et de la rendre unique
+     * @return unique instance de CheminCreator
+     */
+    // Creation d'un singleton
     public static CheminCreator getInstance()
     {
         if(instance == null)
@@ -11,19 +16,26 @@ public class CheminCreator
 
         return instance;
     }
+
+    /**
+     * Cree un fichier
+     *
+     * @param nom nom du fichier
+     * @return nouveau fichier
+     */
     public Fichier createFichier(String nom)
     {
-        if(nom == null || nom.equals(""))
-            throw new IllegalArgumentException();
-
         return new Fichier(nom);
     }
 
+    /**
+     * Cree un repertoire
+     *
+     * @param nom nom du repertoire
+     * @return nouveau repertoire
+     */
     public Repertoire createRepertoire(String nom)
     {
-        if(nom == null || nom.equals(""))
-            throw new IllegalArgumentException();
-
         return new Repertoire(nom);
     }
 }

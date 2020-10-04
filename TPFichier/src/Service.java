@@ -3,12 +3,22 @@ import java.util.ArrayList;
 
 public class Service {
 
+    /**
+     * Retourne le chemin absolu de file (depuis la racine)
+     *
+     * @param file Chemin dont on veut connaitre le chemin absolu
+     * @return chemin absolu de file
+     */
     public static String getChemin(Chemin file)
     {
+        if(file == null)
+            throw new IllegalArgumentException("Le fichier ne peut etre nul");
+
         StringBuilder cheminRetour = new StringBuilder();
         ArrayList<Chemin> fileParents = new ArrayList<>();
         Chemin currentPath = file;
 
+        // Permet de recuperer le chemin dans le bon ordre
         while(!currentPath.getNom().equals("racine"))
         {
             fileParents.add(currentPath);
@@ -22,25 +32,44 @@ public class Service {
         return cheminRetour.toString();
     }
 
-    public static ArrayList<String> getPathsFromAncestor(Repertoire dir)
+    /**
+     * Retourne tous les descendants du dossier passe en parametre
+     *
+     * @param dir dossier dont on veut connaitre les enfants
+     * @return liste des descendants de dir
+     */
+    public static ArrayList<String> getPathsFromAncestor(Chemin dir)
     {
         ArrayList<String> listeRetour = new ArrayList<>();
 
-        for(Chemin path: dir.getChildrens())
+        try
         {
-            if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
+            for (Chemin path : dir.getChildrens())
             {
-                listeRetour.addAll(getPathsFromAncestor((Repertoire) path));
+                if (path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
+                {
+                    listeRetour.addAll(getPathsFromAncestor(path));
+                }
+                else
+                {
+                    listeRetour.add(getChemin(path));
+                }
             }
-            else
-            {
-                listeRetour.add(getChemin(path));
-            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
         }
 
         return listeRetour;
     }
 
+    /**
+     * Retourne les chemins absolus de tous les chemins avec un nom correspondant a celui passe en parametre
+     *
+     * @param name nom du/des chemins que l'on recherche
+     * @return  liste des chemins absolus des fichiers avec le meme nom que name
+     */
     public static ArrayList<String> getChildsByName(String name)
     {
         ArrayList<String> listeRetour = new ArrayList<>();
@@ -56,33 +85,44 @@ public class Service {
         return listeRetour;
     }
 
-    public static int getDirSize(Repertoire dir)
+    /**
+     * Recupere la taille totale d'un Repertoire
+     *
+     * @param dir le repertoire dont on veut connaitre la taille
+     * @return taille du Repertoire
+     */
+    public static int getDirSize(Chemin dir)
     {
         // Initialise avec la taille du repertoire passe en parametre
         int dirSize = Repertoire.size;
 
-        for(Chemin path: dir.getChildrens())
+        try
         {
-            if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
-            {
-                dirSize += getDirSize((Repertoire)path);
-            }
-            else
-            {
-                if(path instanceof Repertoire)
-                {
-                    dirSize += Repertoire.size;
-                }
-                else
-                {
-                    dirSize += ((Fichier) path).getContenu().length();
+            for (Chemin path : dir.getChildrens()) {
+                if (path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0) {
+                    dirSize += getDirSize(path);
+                } else {
+                    if (path instanceof Repertoire) {
+                        dirSize += Repertoire.size;
+                    } else {
+                        dirSize += ((Fichier) path).getContenu().length();
+                    }
                 }
             }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
 
         return dirSize;
     }
 
+    /**
+     * Stocke les données de chemin dans un fichier afin de les conserver
+     *
+     * @param chemin Chemin que l'on souhaite sauvegarder
+     */
     public void serialisation(Chemin chemin)
     {
         try
@@ -102,6 +142,11 @@ public class Service {
         }
     }
 
+    /**
+     * Recupere un objet Chemin a partir d'un fichier
+     *
+     * @return Chemin contenu dans le fichier
+     */
     public Chemin deserialisation()
     {
         Chemin chemin = null;
