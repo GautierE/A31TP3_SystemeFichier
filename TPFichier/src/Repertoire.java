@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Repertoire extends Chemin
 {
+    public static final Repertoire racine = new Repertoire("racine");
     private final ArrayList<Chemin> childrens = new ArrayList<>();
     public static final int size = 4096;
 

@@ -26,47 +26,18 @@ public class Service {
     {
         ArrayList<String> listeRetour = new ArrayList<>();
 
-        // dirQueue contient tous les chemins à tester
-        ArrayList<Chemin> dirQueue = dir.getChildrens();
-        // dirList est une sous liste de dirQueue ne contenant que les dossiers non vide
-        ArrayList<Repertoire> dirList = new ArrayList<>();
-
-        while(dirQueue.size() != 0)
+        for(Chemin path: dir.getChildrens())
         {
-            // Parcours la file d'attente
-            for(Chemin path : dirQueue)
+            if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
             {
-                // Si c'est un repertoire non vide on l'ajoute a la liste des dossiers
-                if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
-                {
-                    dirList.add((Repertoire)path);
-                }
-                else
-                {
-                    listeRetour.add(Service.getChemin(path) + '\n');
-                }
+                listeRetour.addAll(getPathsFromAncestor((Repertoire) path));
             }
-            // Vide la liste d'attente
-            dirQueue.clear();
-            for(Repertoire directory : dirList)
+            else
             {
-                // Parcours les enfants du dossier
-                for(Chemin path : directory.getChildrens())
-                {
-                    // Si  l'enfant contient des elements on l'ajoute a la file
-                    if (path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
-                    {
-                        dirQueue.add(path);
-                    }
-                    // Sinon on l'ajoute au retour
-                    else
-                    {
-                        listeRetour.add(Service.getChemin(path) + '\n');
-                    }
-                }
+                listeRetour.add(getChemin(path));
             }
-            dirList.clear();
         }
+
         return listeRetour;
     }
 
@@ -74,7 +45,7 @@ public class Service {
     {
         ArrayList<String> listeRetour = new ArrayList<>();
 
-        for(String str : getPathsFromAncestor(Chemin.racine))
+        for(String str : getPathsFromAncestor(Repertoire.racine))
         {
             if(str.contains(name))
             {
@@ -89,64 +60,26 @@ public class Service {
     {
         // Initialise avec la taille du repertoire passe en parametre
         int dirSize = Repertoire.size;
-        // dirQueue contient tous les chemins à tester
-        ArrayList<Chemin> dirQueue = dir.getChildrens();
-        // dirList est une sous liste de dirQueue ne contenant que les dossiers non vide
-        ArrayList<Repertoire> dirList = new ArrayList<>();
 
-        while(dirQueue.size() != 0)
+        for(Chemin path: dir.getChildrens())
         {
-            // Parcours la file d'attente
-            for(Chemin path : dirQueue)
+            if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
             {
-                // Si c'est un repertoire non vide on l'ajoute a la liste des dossiers
-                if(path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
+                dirSize += getDirSize((Repertoire)path);
+            }
+            else
+            {
+                if(path instanceof Repertoire)
                 {
-                    dirList.add((Repertoire)path);
                     dirSize += Repertoire.size;
                 }
                 else
                 {
-                    if(path instanceof Repertoire)
-                    {
-                        //System.out.println(path instanceof Repertoire);
-                        dirSize += Repertoire.size;
-                    }
-                    else
-                    {
-                        dirSize += ((Fichier) path).getContenu().length();
-                    }
+                    dirSize += ((Fichier) path).getContenu().length();
                 }
             }
-            // Vide la liste d'attente
-            dirQueue.clear();
-            for(Repertoire directory : dirList)
-            {
-                // Parcours les enfants du dossier
-                for(Chemin path : directory.getChildrens())
-                {
-                    // Si  l'enfant contient des elements on l'ajoute a la file
-                    if (path instanceof Repertoire && ((Repertoire) path).getChildrens().size() > 0)
-                    {
-                        dirQueue.add(path);
-                        dirSize += Repertoire.size;
-                    }
-                    // Sinon on l'ajoute au retour
-                    else
-                    {
-                        if(path instanceof Repertoire)
-                        {
-                            dirSize += Repertoire.size;
-                        }
-                        else
-                        {
-                            dirSize += ((Fichier) path).getContenu().length();
-                        }
-                    }
-                }
-            }
-            dirList.clear();
         }
+
         return dirSize;
     }
 

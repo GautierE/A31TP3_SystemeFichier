@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Terminal
 {
-    private Repertoire currentDir = Chemin.racine;
+    private Repertoire currentDir = Repertoire.racine;
 
     public void touch(String nomFichier)
     {
@@ -23,7 +23,14 @@ public class Terminal
 
     public ArrayList<String> ls()
     {
-        return new ArrayList<String>();
+        ArrayList<String> listeRetour = new ArrayList<>();
+
+        for(Chemin path: currentDir.getChildrens())
+        {
+            listeRetour.add(path.getNom());
+        }
+
+        return listeRetour;
     }
 
     public String pwd()

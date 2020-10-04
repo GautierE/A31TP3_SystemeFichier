@@ -13,7 +13,7 @@ public class CheminCreator
     }
     public Fichier createFichier(String nom)
     {
-        if(nom == null || nom == "")
+        if(nom == null || nom.equals(""))
             throw new IllegalArgumentException();
 
         return new Fichier(nom);
@@ -21,7 +21,7 @@ public class CheminCreator
 
     public Repertoire createRepertoire(String nom)
     {
-        if(nom == null || nom == "")
+        if(nom == null || nom.equals(""))
             throw new IllegalArgumentException();
 
         return new Repertoire(nom);

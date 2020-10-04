@@ -4,7 +4,6 @@ import java.util.ArrayList;
 public abstract class Chemin implements Serializable {
     private String nom;
     private Repertoire parent;
-    public static final Repertoire racine = new Repertoire("racine");
 
     public String getNom() {
         return nom;

@@ -5,7 +5,7 @@ public class Main
         CheminCreator creator = CheminCreator.getInstance();
 
         Repertoire a31 = creator.createRepertoire("A31");
-        Chemin.racine.addChild(a31);
+        Repertoire.racine.addChild(a31);
         Fichier tp1 = creator.createFichier("TP1");
         tp1.setContenu("Le tp 1");
         a31.addChild(tp1);
@@ -24,7 +24,7 @@ public class Main
 
 
         Repertoire w31 = creator.createRepertoire("W31");
-        Chemin.racine.addChild(w31);
+        Repertoire.racine.addChild(w31);
         Fichier td1 = creator.createFichier("TD1");
         td1.setContenu("Le td1");
         w31.addChild(td1);
@@ -35,7 +35,7 @@ public class Main
         td3.setContenu("Le td3");
         w31.addChild(td3);
 
-        System.out.println(Service.getPathsFromAncestor(Chemin.racine));
+        System.out.println(Service.getDirSize(Repertoire.racine));
 
     }
 }
