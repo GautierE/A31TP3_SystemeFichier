@@ -90,11 +90,21 @@ public abstract class Chemin implements Serializable, TreeModel {
     }
 
 
+    /**
+     * Retourne la racine du Tree
+     * @return racine du Tree
+     */
     @Override
     public Object getRoot() {
         return Repertoire.racine;
     }
 
+    /**
+     * Recupere un enfant avec l'index specifie
+     * @param parent parent dont on cherche l'enfant
+     * @param index index de l'enfant
+     * @return enfant avec l'index index
+     */
     @Override
     public Object getChild(Object parent, int index)
     {
@@ -108,6 +118,11 @@ public abstract class Chemin implements Serializable, TreeModel {
         }
     }
 
+    /**
+     * Retourne le nombre d'enfants d'un parent
+     * @param parent parent dont on cherche le nombre d'enfants
+     * @return nombre d'enfants
+     */
     @Override
     public int getChildCount(Object parent)
     {
@@ -121,12 +136,23 @@ public abstract class Chemin implements Serializable, TreeModel {
         }
     }
 
+    /**
+     * Verifie si node est un fichier
+     * @param node chemin
+     * @return vrai si node est un Fichier sinon faux
+     */
     @Override
     public boolean isLeaf(Object node)
     {
         return node instanceof Fichier;
     }
 
+    /**
+     * Recupere l'index d'un enfant du parent
+     * @param parent parent dont on cherche l'index de l'enfant
+     * @param child enfant dont on cherche l'index
+     * @return index de l'enfant
+     */
     @Override
     public int getIndexOfChild(Object parent, Object child) {
         if(parent instanceof Fichier)
@@ -156,6 +182,10 @@ public abstract class Chemin implements Serializable, TreeModel {
 
     }
 
+    /**
+     * Retourne une description du Chemin en affichant son nom
+     * @return nom du Chemin
+     */
     @Override
     public String toString() {
         return this.getNom();
