@@ -2,6 +2,11 @@ package controller;
 
 import modele.*;
 
+/**
+ * Classe rerspectant le design pattern Fabrique permettant d'instancier des fichiers et des repertoires
+ *
+ * @author Gautier EDEL
+ */
 public class CheminCreator
 {
     private static CheminCreator instance;

@@ -2,11 +2,11 @@ package vue;
 
 import modele.*;
 import javax.swing.*;
-import java.awt.*;
 
 /**
- * Cette classe sert à afficher graphiquement l'arborescence à l'aide d'une fenêtre graphique
- * @author Clément GEYER
+ * Cette classe permet d'afficher l'arborescence du système de fichiers à l'aide d'un JTree
+ *
+ * @author Gautier EDEL
  */
 public class Vue extends JFrame {
 

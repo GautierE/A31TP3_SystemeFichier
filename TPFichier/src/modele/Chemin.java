@@ -6,6 +6,11 @@ import javax.swing.tree.TreePath;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Chemin est le Component du design pattern composite et rassemble donc les informations et methodes necessaires a Fichier et Repertoire
+ *
+ * @author Gautier EDEL
+ */
 public abstract class Chemin implements Serializable, TreeModel {
     private String nom;
     private Repertoire parent;

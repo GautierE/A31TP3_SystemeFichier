@@ -2,6 +2,11 @@ package modele;
 
 import java.util.ArrayList;
 
+/**
+ * La clase Repertoire permet d'instancier un repertoire
+ *
+ * @author Gautier EDEL
+ */
 public class Repertoire extends Chemin
 {
     public static final Repertoire racine = new Repertoire("racine");

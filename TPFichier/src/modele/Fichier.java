@@ -1,8 +1,10 @@
 package modele;
 
-import javax.swing.event.TreeModelListener;
-import javax.swing.tree.TreePath;
-
+/**
+ * La classe Fichier permet de representer un fichier dans l'arborescence
+ *
+ * @author Gautier EDEL
+ */
 public class Fichier extends Chemin
 {
     private String contenu;

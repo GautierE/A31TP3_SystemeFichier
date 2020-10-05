@@ -4,6 +4,11 @@ import modele.*;
 
 import java.util.ArrayList;
 
+/**
+ * La classe Terminal permet de controler le systeme de fichiers
+ *
+ * @author Gautier EDEL
+ */
 public class Terminal
 {
     private Repertoire currentDir;
@@ -52,8 +57,6 @@ public class Terminal
 
     /**
      * Affiche le contenu du repertoire courant
-     *
-     * @return chaque chemin du repertoire courant sous forme de liste
      */
     public void ls()
     {
@@ -69,8 +72,6 @@ public class Terminal
 
     /**
      * Retourne le chemin absolu du repertoire courant
-     *
-     * @return retourne le chemin absolu du repertoire courant
      */
     public void pwd()
     {

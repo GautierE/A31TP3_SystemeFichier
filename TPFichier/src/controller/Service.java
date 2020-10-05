@@ -5,6 +5,11 @@ import modele.*;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * La classe Service permet de récupérer des informations commele chemin absolu d'un fichier, la taille totale d'un repertoire...
+ *
+ * @author Gautier EDEL
+ */
 public class Service {
 
     /**

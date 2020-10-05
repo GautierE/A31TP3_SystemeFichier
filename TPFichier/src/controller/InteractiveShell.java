@@ -1,8 +1,14 @@
+package controller;
+
 import java.io.Console;
 import java.util.List;
 
+import modele.Repertoire;
+import vue.*;
 import jdk.jshell.JShell;
 import jdk.jshell.SnippetEvent;
+
+import javax.swing.*;
 
 public class InteractiveShell {
 
@@ -20,10 +26,10 @@ public class InteractiveShell {
             jsh.eval( "Repertoire root = Repertoire.racine;" );
 
             // Creation d'un terminal
-            jsh.eval( "Terminal t = new Terminal(root);" );
+            jsh.eval( "Terminal t = new Terminal(Repertoire.racine);" );
 
             // Creation d'une vue ?
-
+            Vue maFenetre = new Vue();
 
             // Boucle infinie d'évaluations
             do {
@@ -61,7 +67,8 @@ public class InteractiveShell {
                 }
 
                 // Mise a jour de la vue ?
-
+                maFenetre.getContentPane().remove(0);
+                maFenetre.getContentPane().add(new JTree(Repertoire.racine));
 
             } while (true);
 

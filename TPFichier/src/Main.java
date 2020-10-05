@@ -14,7 +14,8 @@ public class Main
         System.out.println("--- Test du Terminal ---");
         testTerminal();
 
-        Vue vue = new Vue();
+        // Creation de la fenetre
+        new Vue();
 
     }
 
@@ -25,6 +26,7 @@ public class Main
         t.mkdir("D31");
         t.cd("D31");
         t.mkdir("Projet D31");
+        t.mkdir("Projet D31 Temporaire");
         t.touch("TP 1");
         t.touch("TP 2");
         System.out.println("Le chemin absolu du repertoire courant: ");
@@ -33,6 +35,7 @@ public class Main
         t.ls();
         t.mv("TP 2", "TD 2");
         t.rm("TP 1");
+        t.rmdir("Projet D31 Temporaire");
         System.out.println("Contenu du repertoire courant apres suppression de TP1 et renommage de TP2 en TD2: ");
         t.ls();
     }
