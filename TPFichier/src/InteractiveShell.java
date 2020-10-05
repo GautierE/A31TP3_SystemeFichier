@@ -13,12 +13,8 @@ public class InteractiveShell {
         try (JShell jsh = JShell.create()) {
 
             // imports (à completer)
-            jsh.eval("import src.Chemin;");
-            jsh.eval("import src.CheminCreator;");
-            jsh.eval("import src.Fichier;");
-            jsh.eval("import src.Repertoire;");
-            jsh.eval("import src.Service;");
-            jsh.eval("import src.Terminal;");
+            jsh.eval("import modele.*;");
+            jsh.eval("import controller.*;");
 
             // Creation de la racine du systeme de fichiers
             jsh.eval( "Repertoire root = Repertoire.racine;" );
@@ -27,6 +23,7 @@ public class InteractiveShell {
             jsh.eval( "Terminal t = new Terminal(root);" );
 
             // Creation d'une vue ?
+
 
             // Boucle infinie d'évaluations
             do {

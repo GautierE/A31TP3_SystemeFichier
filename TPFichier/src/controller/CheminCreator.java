@@ -1,3 +1,7 @@
+package controller;
+
+import modele.*;
+
 public class CheminCreator
 {
     private static CheminCreator instance;

@@ -1,3 +1,7 @@
+import controller.*;
+import modele.*;
+import vue.*;
+
 public class Main
 {
     public static void main(String[] args)
@@ -9,6 +13,9 @@ public class Main
         // Test du Terminal via le main car l'interactive shell ne fonctionne pas
         System.out.println("--- Test du Terminal ---");
         testTerminal();
+
+        Vue vue = new Vue();
+
     }
 
     public static void testTerminal()
@@ -20,11 +27,14 @@ public class Main
         t.mkdir("Projet D31");
         t.touch("TP 1");
         t.touch("TP 2");
-        System.out.println("Le chemin absolu du repertoire courant: "+ t.pwd());
-        System.out.println("Contenu du repertoire courant: " + t.ls());
+        System.out.println("Le chemin absolu du repertoire courant: ");
+        t.pwd();
+        System.out.println("Contenu du repertoire courant: ");
+        t.ls();
         t.mv("TP 2", "TD 2");
         t.rm("TP 1");
-        System.out.println("Contenu du repertoire courant apres suppression de TP1 et renommage de TP2 en TD2: " + t.ls());
+        System.out.println("Contenu du repertoire courant apres suppression de TP1 et renommage de TP2 en TD2: ");
+        t.ls();
     }
 
     public static void testServiceCreator()

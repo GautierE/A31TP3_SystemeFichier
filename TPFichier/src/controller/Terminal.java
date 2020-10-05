@@ -1,3 +1,7 @@
+package controller;
+
+import modele.*;
+
 import java.util.ArrayList;
 
 public class Terminal
@@ -51,7 +55,7 @@ public class Terminal
      *
      * @return chaque chemin du repertoire courant sous forme de liste
      */
-    public ArrayList<String> ls()
+    public void ls()
     {
         ArrayList<String> listeRetour = new ArrayList<>();
 
@@ -60,7 +64,7 @@ public class Terminal
             listeRetour.add(path.getNom());
         }
 
-        return listeRetour;
+        System.out.println(listeRetour);
     }
 
     /**
@@ -68,9 +72,9 @@ public class Terminal
      *
      * @return retourne le chemin absolu du repertoire courant
      */
-    public String pwd()
+    public void pwd()
     {
-        return Service.getChemin(currentDir);
+        System.out.println(Service.getChemin(currentDir));
     }
 
     /**
@@ -108,6 +112,25 @@ public class Terminal
         for(Chemin path : currentDir.getChildrens())
         {
             if(path.getNom().equals(nomFichier) && path instanceof Fichier)
+            {
+                currentDir.removeChild(path);
+            }
+        }
+    }
+
+    /**
+     * Supprime un repertoire du repertoire courant
+     *
+     * @param nomRepertoire nom du fichier a supprimer
+     */
+    public void rmdir(String nomRepertoire)
+    {
+        if(nomRepertoire == null || nomRepertoire.equals(""))
+            throw new IllegalArgumentException("Le nom du repertoire ne peut etre nul");
+
+        for(Chemin path : currentDir.getChildrens())
+        {
+            if(path.getNom().equals(nomRepertoire) && path instanceof Repertoire)
             {
                 currentDir.removeChild(path);
             }
