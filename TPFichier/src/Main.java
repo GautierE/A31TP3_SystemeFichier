@@ -36,7 +36,7 @@ public class Main
         t.mv("TP 2", "TD 2");
         t.rm("TP 1");
         t.rmdir("Projet D31 Temporaire");
-        System.out.println("Contenu du repertoire courant apres suppression de TP1 et renommage de TP2 en TD2: ");
+        System.out.println("Contenu du repertoire courant apres suppression de TP1 et Projet D31 Temporaire ainsi que renommage de TP2 en TD2: ");
         t.ls();
     }
 

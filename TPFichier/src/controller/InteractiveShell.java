@@ -69,7 +69,6 @@ public class InteractiveShell {
                 // Mise a jour de la vue ?
                 maFenetre.getContentPane().remove(0);
                 maFenetre.getContentPane().add(new JTree(Repertoire.racine));
-
             } while (true);
 
         } // Fin try-with-resource

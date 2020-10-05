@@ -23,7 +23,7 @@ public class Service {
         if(file == null)
             throw new IllegalArgumentException("Le fichier ne peut etre nul");
 
-        StringBuilder cheminRetour = new StringBuilder();
+        StringBuilder cheminRetour = new StringBuilder("/");
         ArrayList<Chemin> fileParents = new ArrayList<>();
         Chemin currentPath = file;
 
@@ -35,7 +35,14 @@ public class Service {
         }
         for(int i= fileParents.size()-1; i>=0; i--)
         {
-            cheminRetour.append('/').append(fileParents.get(i).getNom());
+            if(i == 0)
+            {
+                cheminRetour.append(fileParents.get(i).getNom());
+            }
+            else
+            {
+                cheminRetour.append(fileParents.get(i).getNom()).append('/');
+            }
         }
 
         return cheminRetour.toString();
