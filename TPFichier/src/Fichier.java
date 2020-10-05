@@ -1,3 +1,6 @@
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreePath;
+
 public class Fichier extends Chemin
 {
     private String contenu;
