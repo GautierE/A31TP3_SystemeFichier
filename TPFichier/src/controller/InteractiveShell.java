@@ -2,13 +2,9 @@ package controller;
 
 import java.io.Console;
 import java.util.List;
-
-import modele.Repertoire;
-import vue.*;
 import jdk.jshell.JShell;
 import jdk.jshell.SnippetEvent;
 
-import javax.swing.*;
 
 public class InteractiveShell {
 
@@ -21,15 +17,16 @@ public class InteractiveShell {
             // imports (à completer)
             jsh.eval("import modele.*;");
             jsh.eval("import controller.*;");
+            jsh.eval("import vue.*;");
 
             // Creation de la racine du systeme de fichiers
             jsh.eval( "Repertoire root = Repertoire.racine;" );
 
             // Creation d'un terminal
-            jsh.eval( "Terminal t = new Terminal(Repertoire.racine);" );
+            jsh.eval( "Terminal t = new Terminal(root);" );
 
             // Creation d'une vue ?
-            Vue maFenetre = new Vue();
+            jsh.eval("Vue maFenetre = new Vue(root);");
 
             // Boucle infinie d'évaluations
             do {
@@ -67,8 +64,12 @@ public class InteractiveShell {
                 }
 
                 // Mise a jour de la vue ?
-                maFenetre.getContentPane().remove(0);
-                maFenetre.getContentPane().add(new JTree(Repertoire.racine));
+                /*maFenetre.getContentPane().remove(0);
+                maFenetre.getContentPane().add(new JTree(Repertoire.racine));*/
+
+                // Mise a jour de la vue ?
+                jsh.eval( "maFenetre.getContentPane().remove(0);");
+                jsh.eval( "maFenetre.addJTree(root); ");
             } while (true);
 
         } // Fin try-with-resource

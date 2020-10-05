@@ -122,12 +122,9 @@ public abstract class Chemin implements Serializable, TreeModel {
     }
 
     @Override
-    public boolean isLeaf(Object node) {
-        if(node instanceof Repertoire && ((Repertoire)node).getChildrens().size() == 0)
-        {
-            return true;
-        }
-        else return node instanceof Fichier;
+    public boolean isLeaf(Object node)
+    {
+        return node instanceof Fichier;
     }
 
     @Override

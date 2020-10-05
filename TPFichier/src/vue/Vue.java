@@ -10,13 +10,18 @@ import javax.swing.*;
  */
 public class Vue extends JFrame {
 
-    public Vue()
+    public Vue(Repertoire racine)
     {
-        this.add(new JTree(Repertoire.racine));
+        this.add(new JTree(racine));
         setTitle("Système de fichier");
         setSize(500, 400);
         setLocation(200, 200);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
+    }
+
+    public void addJTree(Repertoire racine)
+    {
+        this.add(new JTree(racine));
     }
 }

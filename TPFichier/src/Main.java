@@ -1,6 +1,5 @@
 import controller.*;
 import modele.*;
-import vue.*;
 
 public class Main
 {
@@ -15,7 +14,7 @@ public class Main
         testTerminal();
 
         // Creation de la fenetre
-        new Vue();
+       // new Vue();
 
     }
 

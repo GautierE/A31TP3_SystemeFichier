@@ -96,6 +96,10 @@ public class Terminal
             {
                 currentDirTemp = (Repertoire) path;
             }
+            else if(path.getNom().equals(nomRepertoire) && path instanceof Fichier)
+            {
+                System.out.println(path.getNom() + " n'est pas un repertoire");
+            }
         }
         currentDir = currentDirTemp;
     }
@@ -116,6 +120,10 @@ public class Terminal
             {
                 currentDir.removeChild(path);
             }
+            else if(path.getNom().equals(nomFichier) && path instanceof Repertoire)
+            {
+                System.out.println(path.getNom() + " n'est pas un fichier");
+            }
         }
     }
 
@@ -134,6 +142,10 @@ public class Terminal
             if(path.getNom().equals(nomRepertoire) && path instanceof Repertoire)
             {
                 currentDir.removeChild(path);
+            }
+            else if(path.getNom().equals(nomRepertoire) && path instanceof Fichier)
+            {
+                System.out.println(path.getNom() + " n'est pas un repertoire");
             }
         }
     }
